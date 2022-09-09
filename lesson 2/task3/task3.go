@@ -1,16 +1,19 @@
 package main
 
-import "fmt"
-
 func main() {
 	DisplayNumberInReverseOrderWithDefer()
 }
 
 func DisplayNumberInReverseOrderWithDefer() {
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 100000000; i++ {
 		//
 		// WRITE YOUR CODE HERE
-		defer fmt.Println(i)
+		defer A()
 		//
 	}
+}
+
+func A() {
+	a := "12"
+	a = a + "2"
 }
