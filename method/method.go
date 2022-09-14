@@ -34,7 +34,7 @@ func (a Rectangle) RectangleArea() float64 {
 }
 
 func (a Rectangle) RectanglePer() float64 {
-	return a.x * a.y * 2
+	return (a.x + a.y) * 2
 }
 
 // Circle ///////////////// aylana// -----------------------------------------// -----------------------------------------// -----------------------------------------
@@ -75,9 +75,35 @@ func (a Triangle) TrianglePer() float64 {
 // Triangle /////////////-------------------// -----------------------------------------// -----------------------------------------// -----------------------------------------
 
 func main() {
-	areaKvadrat := square{4}
+	areaKvadrat := square{4} // kvadrat
 	fmt.Printf("Kvadrat tomoni=%0.0f \nKvadrat Yuzasi=", areaKvadrat)
 	fmt.Println(areaKvadrat.SquareArea())
-	fmt.Printf("Kvadrat Perimetri=%0.0f", areaKvadrat)
+	fmt.Printf("%s", "Kvadrat Perimetri=")
 	fmt.Println(areaKvadrat.SquarePer())
+
+	fmt.Println("\n")
+
+	Rectangles := Rectangle{4, 6} // To'rt burchak
+	fmt.Printf("To'rt burchak tomonlarii=%0.0f \nTo'rt burchak Yuzasi=", Rectangles)
+	fmt.Println(Rectangles.RectangleArea())
+	fmt.Printf("%s", "To'rt burchak Perimetri=")
+	fmt.Println(Rectangles.RectanglePer())
+
+	fmt.Println("\n")
+
+	Circles := Circle{4} // Aylana
+	fmt.Printf("Aylana radiusi=%0.0f \nAylana Yuzasi=", Circles)
+	fmt.Println(Circles.CircleArea())
+	fmt.Printf("%s", "Aylana yoyi uzunligi=")
+	fmt.Println(Circles.CirclePer())
+
+	fmt.Println("\n")
+
+	Triangles := Triangle{3, 4, 5} // Uch burchak
+	fmt.Printf("Uch burchak tomonlarii=%0.0f \nUch burchak Yuzasi=", Triangles)
+	fmt.Println(Triangles.TriangleArea())
+	fmt.Printf("%s", "Uch burchak Perimetri=")
+	fmt.Println(Triangles.TrianglePer())
+
+	fmt.Println("\n")
 }
