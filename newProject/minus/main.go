@@ -76,7 +76,27 @@ func main() {
 	var k []int
 	if e == 1 { // a>b
 		answer = ""
-		for i := 0; i < len(a); i++ {
+		for i := len(a); i > 0; i-- {
+			if strconvInt(a[i-1]) < strconvInt(b[i-1]) {
+				//
+
+				if strconvInt(a[i-1]) == 0 {
+					a[i-1] = "9"
+					if i-2 >= 0 { // 0 ga teng bo'vb qosa
+						if a[i-2] == "0" {
+							a[i-2]=
+						} else {
+							a[i-2] = intconvstr(strconvInt(a[i-2]) - 1)
+						}
+					}
+
+				} else {
+					a[i-1] = intconvstr(strconvInt(a[i-1]) - 1)
+					if i-2 >= 0 {
+						a[i-2] = intconvstr(strconvInt(a[i-2]) - 1)
+					}
+				}
+			}
 
 			h := strconvInt(a[i]) - strconvInt(b[i])
 			k = append(k, h)
