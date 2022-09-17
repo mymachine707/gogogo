@@ -46,6 +46,7 @@ func main() {
 				c += 1
 				break
 			}
+
 		}
 		answer = "0"
 
@@ -72,19 +73,27 @@ func main() {
 		s = nil
 	}
 
-	
+	var k []int
 	if e == 1 { // a>b
+		answer = ""
 		for i := 0; i < len(a); i++ {
-			answer += intconvstr(strconvInt(a[i]) - strconvInt(b[i]))
+
+			h := strconvInt(a[i]) - strconvInt(b[i])
+			k = append(k, h)
 		}
 		fmt.Println("\tnumber1 > number2")
-		fmt.Printf("\tAnswer number: %s\n", answer)
+		fmt.Printf("\tAnswer number: %d\n", k)
 	} else if c == 1 { // a<b
+		answer = ""
 		for i := 0; i < len(a); i++ {
-			answer += intconvstr(strconvInt(b[i]) - strconvInt(a[i]))
+			h := strconvInt(b[i]) - strconvInt(a[i])
+			k = append(k, h)
 		}
 		fmt.Println("\tnumber1 < number2")
-		fmt.Printf("\tAnswer number: %s\n", answer)
+		fmt.Printf("\tAnswer number: %d\n", k)
+	} else {
+		fmt.Println("\tnumber1 = number2")
+		fmt.Printf("\t   Answer number: %s\n", answer)
 	}
 
 } //------------------------------------------------main yopildi
