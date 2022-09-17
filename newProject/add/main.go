@@ -47,12 +47,34 @@ func main() {
 	//stringlarni slice holatida har bir elementini qo'shib yangi slice hosil qilish
 
 	var answer string // javobni ansverga biriktirish
+	var k []int
 
+	var m int
 	for i := 0; i < len(a); i++ {
-		answer += intconvstr(strconvInt(a[i]) + strconvInt(b[i]))
+		z := strconvInt(a[i]) + strconvInt(b[i])
+		k = append(k, z)
+
+		for i := len(k); i > 0; i-- {
+			if k[i-1] > 10 {
+				if i-1 > 0 {
+					m = k[i-1] - 10
+					k[i-1] = m
+					if i-2 >= 0 {
+						k[i-2]++
+					}
+				} else if i-1 == 0 {
+					break
+				}
+
+			}
+		}
 	}
 
-	fmt.Printf("\tAnswer number: %s\n", answer)
+	for i := 0; i < len(k); i++ {
+		answer += intconvstr(k[i])
+	}
+
+	fmt.Println("\t   Answer number:", answer)
 } //------------------------------------------------main yopildi
 
 // stringdan intga o'tqizadi
