@@ -72,6 +72,7 @@ func main() {
 		s = nil
 	}
 
+	
 	if e == 1 { // a>b
 		for i := 0; i < len(a); i++ {
 			answer += intconvstr(strconvInt(a[i]) - strconvInt(b[i]))
