@@ -18,43 +18,19 @@ func main() {
 	fmt.Printf("%s", "\tEntered number 2: ")
 	fmt.Scanf("%s", &num2)
 
+	fmt.Println("\t   Answer number:", adder(num1, num2))
+} //------------------------------------------------main yopildi
+
+func adder(num1, num2 string) string {
 	a := strings.Split(num1, "")
 	b := strings.Split(num2, "")
 
 	// kiruvchi stringlarni uzunligini tenglashtirish======================
-	var answer string // javobni answerga biriktirish
+
 	var s []string
 	var y int
-	var e int // a katta b dan
-	var c int // a kichik b dan
-	// qaysi son kattaligini tekshirish kerak
+
 	if len(a) > len(b) {
-		// a katta b dan
-		e += 1
-	} else if len(a) < len(b) {
-		// a kichik b dan
-		c += 1
-	} else if len(a) == len(b) {
-		// a teng b ga
-		for i := 0; i < len(a); i++ {
-			if a[i] > b[i] {
-				// a katta b dan
-				e += 1
-				break
-			} else if a[i] < b[i] {
-				// a kichik b dan
-				c += 1
-				break
-			}
-
-		}
-		answer = "0"
-
-	}
-
-	// slicelarni bir biriga tenglashtirish jarayoni bu kod o'zgartirilmasin
-
-	if e == 1 { // a katta b dan
 		y = len(a) - len(b)
 		for i := 0; i < y; i++ {
 			s = append(s, "0")
@@ -62,8 +38,7 @@ func main() {
 		s = append(s, b...)
 		b = s
 		s = nil
-
-	} else if c == 1 { // a kichik b dan
+	} else {
 		y = len(b) - len(a)
 		for i := 0; i < y; i++ {
 			s = append(s, "0")
@@ -72,26 +47,39 @@ func main() {
 		a = s
 		s = nil
 	}
-	// amallarni bajarish
-	fmt.Println(a)
-	fmt.Println(b)
-	var k []string
-	var j int = 0
-	var o int
-	if e == 1 { // a>b
 
-		fmt.Println("\tnumber1 > number2")
-		fmt.Printf("\tAnswer number: %s\n", k)
-	} else if c == 1 { // a<b
+	//stringlarni slice holatida har bir elementini qo'shib yangi slice hosil qilish
 
-		fmt.Println("\tnumber1 > number2")
-		fmt.Printf("\tAnswer number: %s\n", k)
-	} else {
-		fmt.Println("\tnumber1 = number2")
-		fmt.Printf("\t   Answer number: %s\n", answer)
+	var answer string // javobni ansverga biriktirish
+	var k []int
+
+	var m int
+	for i := 0; i < len(a); i++ {
+		z := strconvInt(a[i]) + strconvInt(b[i])
+		k = append(k, z)
+
+		for i := len(k); i > 0; i-- {
+			if k[i-1] > 10 {
+				if i-1 > 0 {
+					m = k[i-1] - 10
+					k[i-1] = m
+					if i-2 >= 0 {
+						k[i-2]++
+					}
+				} else if i-1 == 0 {
+					break
+				}
+
+			}
+		}
 	}
 
-} //------------------------------------------------main yopildi
+	for i := 0; i < len(k); i++ {
+		answer += intconvstr(k[i])
+	}
+
+	return answer
+}
 
 // stringdan intga o'tqizadi
 func strconvInt(str string) int {
