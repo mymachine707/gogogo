@@ -8,21 +8,21 @@ import (
 
 func main() {
 
-	fmt.Println("Sonlarni string holatida qo'shish")
-	var num1 string = "5465" // o'n ming
-	var num2 string = "0001" // o'n beshming
+	fmt.Println("Sonlarni string holatida ayirish")
+	var num1 string = "27564" // o'n ming
+	var num2 string = "10987" // o'n beshming
+	/*
+		fmt.Printf("%s", "\tEntered number 1: ")
+		fmt.Scanf("%s", &num1)
 
-	fmt.Printf("%s", "\tEntered number 1: ")
-	fmt.Scanf("%s", &num1)
-
-	fmt.Printf("%s", "\tEntered number 2: ")
-	fmt.Scanf("%s", &num2)
-
+		fmt.Printf("%s", "\tEntered number 2: ")
+		fmt.Scanf("%s", &num2)
+	*/
 	a := strings.Split(num1, "")
 	b := strings.Split(num2, "")
 
 	// kiruvchi stringlarni uzunligini tenglashtirish======================
-	var answer string // javobni answerga biriktirish
+
 	var s []string
 	var y int
 	var e int // a katta b dan
@@ -48,7 +48,6 @@ func main() {
 			}
 
 		}
-		answer = "0"
 
 	}
 
@@ -72,49 +71,57 @@ func main() {
 		a = s
 		s = nil
 	}
+	//==========================
 
-	var k []int
-	if e == 1 { // a>b
-		answer = ""
+	// asosiy shartlar
+	var z []string = a
+	var x bool = false
+	var u int
+
+	//a bilan b berilgan slice holatida
+
+	if e == 1 { // a kotta b dan bo'gan holatida
 		for i := len(a); i > 0; i-- {
-			if strconvInt(a[i-1]) < strconvInt(b[i-1]) {
+			if x == false && strconvInt(a[i-1])-strconvInt(b[i-1]) > 0 {
+				z[i-1] = intconvstr(strconvInt(a[i-1]) - strconvInt(b[i-1]))                          //z
+				fmt.Printf("--->>>1--->: %s=%d-%d\n", z[i-1], strconvInt(a[i-1]), strconvInt(b[i-1])) //--->>>1--->:
+			} else if x == false && strconvInt(a[i-1])-strconvInt(b[i-1]) < 0 { //------------------------------------------2
+
+				u = strconvInt(a[i-1]) + 10
+				z[i-1] = intconvstr(u - strconvInt(b[i-1]))
+
+				fmt.Printf("--->>>2--->: %s=%d-%d\n", z[i-1], e, strconvInt(b[i-1])) //--->>>2--->:
+				x = true
 				//
-
-				if strconvInt(a[i-1]) == 0 {
-					a[i-1] = "9"
-					if i-2 >= 0 { // 0 ga teng bo'vb qosa
-						if a[i-2] == "0" {
-							a[i-2]=
-						} else {
-							a[i-2] = intconvstr(strconvInt(a[i-2]) - 1)
-						}
-					}
-
-				} else {
-					a[i-1] = intconvstr(strconvInt(a[i-1]) - 1)
-					if i-2 >= 0 {
-						a[i-2] = intconvstr(strconvInt(a[i-2]) - 1)
-					}
+			} else if x == true && strconvInt(a[i-1])-strconvInt(b[i-1]) > 0 {
+				//
+				if strconvInt(a[i-1])-1-strconvInt(b[i-1]) > 0 {
+					z[i-1] = intconvstr(strconvInt(a[i-1]) - 1 - strconvInt(b[i-1]))
+					fmt.Printf("--->>>3--->: %s=%d-%d\n", z[i-1], strconvInt(a[i-1]), strconvInt(b[i-1])) //--->>>3--->:
+					x = false
+				} else if strconvInt(a[i-1])-1-strconvInt(b[i-1]) < 0 {
+					a[i-1] = intconvstr(strconvInt(a[i-1]) + 9)
+					z[i-1] = intconvstr(strconvInt(a[i-1]) - strconvInt(b[i-1]))
+					fmt.Printf("--->>>4--->: %s=%d-%d\n", z[i-1], strconvInt(a[i-1]), strconvInt(b[i-1])) //--->>>4--->:
+					x = true
 				}
 			}
-
-			h := strconvInt(a[i]) - strconvInt(b[i])
-			k = append(k, h)
+			fmt.Println(i - 1)
 		}
-		fmt.Println("\tnumber1 > number2")
-		fmt.Printf("\tAnswer number: %d\n", k)
-	} else if c == 1 { // a<b
-		answer = ""
-		for i := 0; i < len(a); i++ {
-			h := strconvInt(b[i]) - strconvInt(a[i])
-			k = append(k, h)
-		}
-		fmt.Println("\tnumber1 < number2")
-		fmt.Printf("\tAnswer number: %d\n", k)
-	} else {
-		fmt.Println("\tnumber1 = number2")
-		fmt.Printf("\t   Answer number: %s\n", answer)
 	}
+
+	// natijani birlashtirish
+	//var answers string
+	/*
+		for i := 0; i < len(h); i++ {
+			answers = adder(answers, h[i])
+		}*/
+
+	fmt.Println("\t    number1:", num1)
+	fmt.Println("\t    number2:", num2)
+	fmt.Println("\t   Answer number:", z)
+
+	//==========================
 
 } //------------------------------------------------main yopildi
 
@@ -133,3 +140,66 @@ func intconvstr(num int) string {
 	str := strconv.Itoa(num)
 	return str
 }
+
+// qo'shish funksiyasi
+func adder(num1, num2 string) string {
+	a := strings.Split(num1, "")
+	b := strings.Split(num2, "")
+
+	// kiruvchi stringlarni uzunligini tenglashtirish======================
+
+	var s []string
+	var y int
+
+	if len(a) > len(b) {
+		y = len(a) - len(b)
+		for i := 0; i < y; i++ {
+			s = append(s, "0")
+		}
+		s = append(s, b...)
+		b = s
+		s = nil
+	} else {
+		y = len(b) - len(a)
+		for i := 0; i < y; i++ {
+			s = append(s, "0")
+		}
+		s = append(s, a...)
+		a = s
+		s = nil
+	}
+
+	//stringlarni slice holatida har bir elementini qo'shib yangi slice hosil qilish
+
+	var answer string // javobni ansverga biriktirish
+	var k []int
+
+	var m int
+	for i := 0; i < len(a); i++ {
+		z := strconvInt(a[i]) + strconvInt(b[i])
+		k = append(k, z)
+
+		for i := len(k); i > 0; i-- {
+			if k[i-1] > 10 {
+				if i-1 > 0 {
+					m = k[i-1] - 10
+					k[i-1] = m
+					if i-2 >= 0 {
+						k[i-2]++
+					}
+				} else if i-1 == 0 {
+					break
+				}
+
+			}
+		}
+	}
+
+	for i := 0; i < len(k); i++ {
+		answer += intconvstr(k[i])
+	}
+
+	return answer
+}
+
+//============
