@@ -1,27 +1,3 @@
-package main
-
-import (
-	"fmt"
-	"strconv"
-	"strings"
-)
-
-func main() {
-
-	fmt.Println("Sonlarni string holatida qo'shish")
-	var num1 string = "546000000000000000000000000000000005"  // o'n ming
-	var num2 string = "1200000000000000000000000000000000031" // o'n beshming
-	/*
-		fmt.Printf("%s", "\tEntered number 1: ")
-		fmt.Scanf("%s", &num1)
-
-		fmt.Printf("%s", "\tEntered number 2: ")
-		fmt.Scanf("%s", &num2)
-	*/
-
-	fmt.Printf("answer=%s", addNum(num1, num2))
-
-}
 
 func addNum(num1, num2 string) string {
 	a := strings.Split(num1, "")

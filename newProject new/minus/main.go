@@ -18,6 +18,12 @@ func main() {
 		fmt.Printf("%s", "\tEntered number 2: ")
 		fmt.Scanf("%d", &num2)
 	*/
+	fmt.Printf("Number1: %s\n", num1)
+	fmt.Printf("Number2: %s\n", num2)
+	fmt.Printf("Answer: %s", minus(num1, num2)) 
+}
+
+func minus(num1, num2 string) string {
 	a := strings.Split(num1, "")
 	b := strings.Split(num2, "")
 
@@ -153,12 +159,8 @@ func main() {
 		answers += z[i]
 	}
 
-	fmt.Println("\t    number1:", num1)
-	fmt.Println("\t    number2:", num2)
-	fmt.Println("\t   Answer number:", z)
-
 	//==========================
-
+	return answers
 } //------------------------------------------------main yopildi
 
 // stringdan intga o'tqizadi
@@ -175,65 +177,4 @@ func str_Int(str string) int {
 func int_str(num int) string {
 	str := strconv.Itoa(num)
 	return str
-}
-
-// qo'shish funksiyasi
-func adder(num1, num2 string) string {
-	a := strings.Split(num1, "")
-	b := strings.Split(num2, "")
-
-	// kiruvchi stringlarni uzunligini tenglashtirish======================
-
-	var s []string
-	var y int
-
-	if len(a) > len(b) {
-		y = len(a) - len(b)
-		for i := 0; i < y; i++ {
-			s = append(s, "0")
-		}
-		s = append(s, b...)
-		b = s
-		s = nil
-	} else {
-		y = len(b) - len(a)
-		for i := 0; i < y; i++ {
-			s = append(s, "0")
-		}
-		s = append(s, a...)
-		a = s
-		s = nil
-	}
-
-	//stringlarni slice holatida har bir elementini qo'shib yangi slice hosil qilish
-
-	var answer string // javobni ansverga biriktirish
-	var k []int
-
-	var m int
-	for i := 0; i < len(a); i++ {
-		z := str_Int(a[i]) + str_Int(b[i])
-		k = append(k, z)
-
-		for i := len(k); i > 0; i-- {
-			if k[i-1] > 10 {
-				if i-1 > 0 {
-					m = k[i-1] - 10
-					k[i-1] = m
-					if i-2 >= 0 {
-						k[i-2]++
-					}
-				} else if i-1 == 0 {
-					break
-				}
-
-			}
-		}
-	}
-
-	for i := 0; i < len(k); i++ {
-		answer += int_str(k[i])
-	}
-
-	return answer
 }
