@@ -9,8 +9,8 @@ import (
 func main() {
 
 	fmt.Println("Sonlarni string holatida ayirish")
-	var num1 string = "27564" // o'n ming
-	var num2 string = "10987" // o'n beshming
+	var num1 string = "1000888880000000000000000000000000000000000000000000000000000000000000000007" // o'n ming
+	var num2 string = "890404040404040517159"                                                        // o'n beshming
 	/*
 		fmt.Printf("%s", "\tEntered number 1: ")
 		fmt.Scanf("%s", &num1)
@@ -74,48 +74,52 @@ func main() {
 	//==========================
 
 	// asosiy shartlar
-	var z []string = a
-	var x bool = false
-	var u int
+	var z []string
 
-	//a bilan b berilgan slice holatida
-
-	if e == 1 { // a kotta b dan bo'gan holatida
-		for i := len(a); i > 0; i-- {
-			if x == false && strconvInt(a[i-1])-strconvInt(b[i-1]) > 0 {
-				z[i-1] = intconvstr(strconvInt(a[i-1]) - strconvInt(b[i-1]))                          //z
-				fmt.Printf("--->>>1--->: %s=%d-%d\n", z[i-1], strconvInt(a[i-1]), strconvInt(b[i-1])) //--->>>1--->:
-			} else if x == false && strconvInt(a[i-1])-strconvInt(b[i-1]) < 0 { //------------------------------------------2
-
-				u = strconvInt(a[i-1]) + 10
-				z[i-1] = intconvstr(u - strconvInt(b[i-1]))
-
-				fmt.Printf("--->>>2--->: %s=%d-%d\n", z[i-1], e, strconvInt(b[i-1])) //--->>>2--->:
-				x = true
-				//
-			} else if x == true && strconvInt(a[i-1])-strconvInt(b[i-1]) > 0 {
-				//
-				if strconvInt(a[i-1])-1-strconvInt(b[i-1]) > 0 {
-					z[i-1] = intconvstr(strconvInt(a[i-1]) - 1 - strconvInt(b[i-1]))
-					fmt.Printf("--->>>3--->: %s=%d-%d\n", z[i-1], strconvInt(a[i-1]), strconvInt(b[i-1])) //--->>>3--->:
-					x = false
-				} else if strconvInt(a[i-1])-1-strconvInt(b[i-1]) < 0 {
-					a[i-1] = intconvstr(strconvInt(a[i-1]) + 9)
-					z[i-1] = intconvstr(strconvInt(a[i-1]) - strconvInt(b[i-1]))
-					fmt.Printf("--->>>4--->: %s=%d-%d\n", z[i-1], strconvInt(a[i-1]), strconvInt(b[i-1])) //--->>>4--->:
-					x = true
-				}
-			}
-			fmt.Println(i - 1)
-		}
+	for i := 0; i < len(a); i++ {
+		z = append(z, a[i])
 	}
 
-	// natijani birlashtirish
-	//var answers string
-	/*
-		for i := 0; i < len(h); i++ {
-			answers = adder(answers, h[i])
-		}*/
+	//a bilan b berilgan slice holatida
+	if e == 1 {
+		fmt.Println("number1 > number 2")
+		// a > b bo'lsa:
+		for i := len(a); i > 0; i-- {
+			if str_Int(a[i-1])-str_Int(b[i-1]) > 0 { // Agar joriy indekslar ayirmasi musbat bo'lsa
+				z[i-1] = int_str(str_Int(a[i-1]) - str_Int(b[i-1])) // z joriy indeksiga ayirma qiymati beriladi
+			} else if str_Int(a[i-1])-str_Int(b[i-1]) == 0 { // Agar joriy indekslar ayirmasi 0 ga teng bo'lsa
+				z[i-1] = int_str(0) // z joriy indeksiga 0 qiymat beriladi
+			} else if str_Int(a[i-1])-str_Int(b[i-1]) < 0 { // agar joriy indekslar ayirmasi 0 dan kichik bo'lsa
+				a[i-1] = int_str(str_Int(a[i-1]) + 10)              // katt sonning joriy indeksiga 10 soni qo'shiladi va qaytadan yenglashtiriladi
+				z[i-1] = int_str(str_Int(a[i-1]) - str_Int(b[i-1])) // z ning joriy qiymatini sonlarning joriy qiymatlari ayirmasiga tenglashtiriladi va...
+				if str_Int(a[i-2]) > 0 {                            // agar katta sonning joriy qiymatidan bitta oldingi qiymati 0 dan katta bo'lsa
+					a[i-2] = int_str(str_Int(a[i-2]) - 1) // katta sonning joriy qiymatidan bitta oldingi sonnini bittaga kamaytiriladi
+				} else if str_Int(a[i-2]) == 0 { // agar katta sonning joriy qiymatidan bitta oldingi qiymati 0 ga teng bo'lsa...
+					a[i-2] = "9"           // katta sonning joriy qiymatidan bitta oldingi sonnini 9 soniga tenglashtiriladi
+					var boolen bool = true // for loop uchun boolen qiyamtini true holatida ochildi
+					var m int = 3          // indekslarni tekshirish uchun m int shaklida ochildi va katta sonning joriy qiymatidan ikkita oldingi qiymatini tekshirish uchun m sonini 3 ga tenglandi
+					for boolen {           // for loop ochildi
+						if str_Int(a[i-m]) > 0 { // Agar katta sonning joriy indeksidan ikkita oldingi indeksi 0 dan katta bo'lsa
+							a[i-m] = int_str(str_Int(a[i-m]) - 1) // katta sonning joriy indeksidan ikkita oldingi indeksidan 1 soni ayiriladi
+							boolen = false                        // boolen false qiymatini oladi
+							break                                 // for loopdan chiqiladi
+						} else if str_Int(a[i-m]) == 0 { // Agar katta sonning joriy indeksidan ikkita oldingi indeksi 0 ga teng bo'lsa
+							a[i-m] = "9" // Katta sonning joriy indeksidan ikkita oldingi indeksi "9" ga tenglanadi
+							m++          // m soni 1 ga oshiriladi va for loop qaytadan tekshiruvni boshlaydi
+						}
+
+					}
+				}
+			}
+
+		}
+
+	}
+	//natijani birlashtirish
+	var answers string
+	for i := 0; i < len(z); i++ {
+		answers += z[i]
+	}
 
 	fmt.Println("\t    number1:", num1)
 	fmt.Println("\t    number2:", num2)
@@ -126,7 +130,7 @@ func main() {
 } //------------------------------------------------main yopildi
 
 // stringdan intga o'tqizadi
-func strconvInt(str string) int {
+func str_Int(str string) int {
 	intVar, err := strconv.Atoi(str)
 	if err != nil {
 		return 0 // sho'tda tanish bilishchili bo'b ketti err bersa 0 qayatrmasligi kere boshqa javob so'ra
@@ -136,7 +140,7 @@ func strconvInt(str string) int {
 
 // intdan stringga o'tkizadi
 
-func intconvstr(num int) string {
+func int_str(num int) string {
 	str := strconv.Itoa(num)
 	return str
 }
@@ -176,7 +180,7 @@ func adder(num1, num2 string) string {
 
 	var m int
 	for i := 0; i < len(a); i++ {
-		z := strconvInt(a[i]) + strconvInt(b[i])
+		z := str_Int(a[i]) + str_Int(b[i])
 		k = append(k, z)
 
 		for i := len(k); i > 0; i-- {
@@ -196,10 +200,8 @@ func adder(num1, num2 string) string {
 	}
 
 	for i := 0; i < len(k); i++ {
-		answer += intconvstr(k[i])
+		answer += int_str(k[i])
 	}
 
 	return answer
 }
-
-//============
