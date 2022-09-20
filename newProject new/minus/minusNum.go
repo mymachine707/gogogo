@@ -9,8 +9,8 @@ import (
 func main() {
 
 	fmt.Println("Sonlarni string holatida ayirish")
-	var num1 string = "100000000000000000000000000000000000000000061262"
-	var num2 string = "9999999999999999999999999999999955656565656565"
+	var num1 string = "000000000020"
+	var num2 string = "3"
 	/*
 		fmt.Printf("%s", "\tEntered number 1: ")
 		fmt.Scanf("%d", &num1)
@@ -20,7 +20,7 @@ func main() {
 	*/
 	fmt.Printf("Number1: %s\n", num1)
 	fmt.Printf("Number2: %s\n", num2)
-	fmt.Printf("Answer: %s", minus(num1, num2)) 
+	fmt.Printf("Answer: %s", minus(num1, num2))
 }
 
 func minus(num1, num2 string) string {
