@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 )
 
 func main() {
@@ -16,7 +14,7 @@ func main() {
 	fmt.Printf("%s", "\tEntered number 2: ")
 	fmt.Scanf("%s", &num2)
 	p := add(num1, num2)
-	q := minus(num1, num2)
+	//q := minus(num1, num2)
 	fmt.Printf("answer to nomber add=%s\n", p)
 	fmt.Printf("answer to nomber minus=%s\n", q)
 }
@@ -24,7 +22,7 @@ func main() {
 //====================================================
 
 //======================================================================== musbat sonlarni qo'shish
-
+/*
 func add(num1, num2 string) string {
 	a := strings.Split(num1, "")
 	b := strings.Split(num2, "")
@@ -243,3 +241,4 @@ func minus(num1, num2 string) string {
 } //------------------------- manfiy sonlarni ayirish
 
 // minus two
+*/
