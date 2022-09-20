@@ -19,22 +19,43 @@ func main() {
 	//
 	var number bool
 	//
-	var first string = a[0]
-	//
+	var negative bool
+
+	if a[0] == "+" {
+		negative = false
+	} else if a[0] == "-" {
+		negative = true
+	} else if isInt(a[0]) {
+		negative = false
+	} else {
+		panic("This string is not a number!")
+	}
+
 	for i := 1; i < len(a); i++ {
 		if isInt(a[i]) {
 			number = true
 		} else {
-			number = false
-			return number
+			panic("This string is not a number!")
 		}
 	}
-	/*
-		fmt.Println("This number is negative = ", negative)
-		fmt.Println("The first index of string is number = ", number)
-	*/
-	//
-	//
+
+	var b []string
+	count := 0
+	for i := 0; i < len(a); i++ {
+		if a[i] == "0" {
+			count++
+		}
+	}
+	b = a[count:]
+
+	var answer string
+
+	for i := 0; i < len(b); i++ {
+		answer += b[i]
+	}
+
+	fmt.Println("This number is negative = ", negative)
+	fmt.Println("The first index of string is number = ", answer)
 
 }
 
