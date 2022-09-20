@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
 	"unicode"
 )
@@ -14,8 +13,10 @@ func main() {
 
 	fmt.Printf("%s", "\tEntered number 1: ")
 	fmt.Scanf("%s", &num)
-	isnegatives(num)
+
+	fmt.Println(isnegatives(num))
 }
+
 func isnegatives(num string) bool {
 	a := strings.Split(num, "")
 	//
@@ -30,8 +31,11 @@ func isnegatives(num string) bool {
 	} else {
 		panic("This string is not a number!")
 	}
+
 	return negative
+
 }
+
 func isInt(s string) bool {
 	for _, c := range s {
 		if !unicode.IsDigit(c) {
@@ -39,12 +43,4 @@ func isInt(s string) bool {
 		}
 	}
 	return true
-}
-
-func str_Int(str string) int {
-	intVar, err := strconv.Atoi(str)
-	if err != nil {
-		return 0 // sho'tda tanish bilishchili bo'b ketti err bersa 0 qayatrmasligi kere boshqa javob so'ra
-	}
-	return intVar
 }
