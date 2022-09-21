@@ -15,7 +15,7 @@ func main() {
 	cleanUp(num)
 }
 
-func cleanUp(num string) {
+func cleanUp(num string) string {
 	a := strings.Split(num, "")
 	//
 
@@ -52,7 +52,7 @@ func cleanUp(num string) {
 		answer += b[i]
 	}
 
-	fmt.Println(answer)
+	return answer
 } //-end function
 
 func isInt(s string) bool {

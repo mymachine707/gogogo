@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-/*
+
 func main() {
 
 	fmt.Println("Sonlarni string holatida qo'shish")
@@ -20,9 +20,9 @@ func main() {
 
 	fmt.Printf("\t     answer=%s\t\n", AddNum(num1, num2))
 
-}*/
+}
 
-func add(num1, num2 string) string {
+func Add(num1, num2 string) string {
 	a := strings.Split(num1, "")
 	b := strings.Split(num2, "")
 	// kiruvchi stringlarni uzunligini tenglashtirish======================

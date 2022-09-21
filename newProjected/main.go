@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bigint/add"
 	"fmt"
+	"bigint/"
 )
 
 func main() {
@@ -13,10 +15,10 @@ func main() {
 
 	fmt.Printf("%s", "\tEntered number 2: ")
 	fmt.Scanf("%s", &num2)
-	p := add(num1, num2)
+	p := add.Add(num1, num2)
 	//q := minus(num1, num2)
-	fmt.Printf("answer to nomber add=%s\n", p)
-	fmt.Printf("answer to nomber minus=%s\n", q)
+	fmt.Printf("\tanswer to nomber add=%s\n", p)
+	//fmt.Printf("answer to nomber minus=%s\n", q)
 }
 
 //====================================================

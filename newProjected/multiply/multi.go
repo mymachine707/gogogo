@@ -18,6 +18,9 @@ func main() {
 	fmt.Printf("%s", "\tEntered number 2: ")
 	fmt.Scanf("%s", &b)
 
+	fmt.Println(Multiply(a, b))
+}
+func Multiply(a, b string) string {
 	var k []string
 
 	var e int // a katta b dan
@@ -62,7 +65,8 @@ func main() {
 	for i := 0; i < len(k); i++ {
 		answers = adder(answers, k[i])
 	}
-	fmt.Println("\t   Answer number:", answers)
+
+	return answers
 }
 
 //
